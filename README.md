@@ -2,6 +2,14 @@
 
 Repository to learn how to test APIs using K6.
 
+## Run
+Install K6.
+
+Run command: 
+```bash
+k6 run test/<file name>.js
+```
+
 ## Links
 
 [K6](https://k6.io/)
