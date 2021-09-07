@@ -7,7 +7,7 @@ Install K6.
 
 Run command: 
 ```bash
-k6 run test/<file name>.js
+k6 run test/<filename>.js
 ```
 
 ## Links
