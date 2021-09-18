@@ -21,9 +21,22 @@ jobs:
     runs-on: ubuntu-latest
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
 
-      # Runs a single command using the runners shell
+      - name: Install Ca-Certificates
+        run: sudo apt-get update && sudo apt-get install ca-certificates gnupg2 -y
+      
+      - name: Install Key
+        run: sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys C5AD17C747E3415A3642D57D77C6C491D6AC1D69
+
+      - name: Add Source List
+        run: echo "deb https://dl.k6.io/deb stable main" | sudo tee /etc/apt/sources.list.d/k6.list
+        
+      - name: Update
+        run: sudo apt-get update
+        
+      - name: Install K6
+        run: sudo apt-get install k6
+        
       - name: Run test
         run: k6 run ci.js
